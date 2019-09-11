@@ -32,7 +32,7 @@
                     <span>{{taskDataModel.priority}}</span>
                 </div>
         </div>
-        
+
         <div class="form-group row">
             <label for="parentTask" class="col-sm-1 col-form-label">Parent Task:</label>
             <div class="col-sm-5">
@@ -42,9 +42,9 @@
         </div>
 
         <div class="form-group row">
-            <label for="startDate" class="col-sm-1 col-form-label">Task:</label>
+            <label for="startDate" class="col-sm-1 col-form-label">Start Date:</label>
             <div class="col-sm-5">
-                <input type="text" id="startDate" name="startDate" class="form-control taskInputBg" required #startDate="ngModel" 
+                <input type="text" id="startDate" name="startDate" class="form-control taskInputBg" required #startDate="ngModel"
                 [class.taskInputBg]="startDate.valid || startDate.untouched"
                     [class.taskInputBg-Invalid]="startDate.invalid && startDate.touched"
                     [(ngModel)]="taskDataModel.startDate" placeholder="dd-mm-yyyy">
@@ -54,14 +54,14 @@
         </div>
 
         <div class="form-group row">
-            <label for="endDate" class="col-sm-1 col-form-label">Task:</label>
+            <label for="endDate" class="col-sm-1 col-form-label">End Date:</label>
             <div class="col-sm-5">
                 <input type="text" id="endDate" name="endDate" class="form-control taskInputBg" #endDate="ngModel"
                 [class.taskInputBg]="endDate.valid || endDate.untouched"
                 [class.taskInputBg-Invalid]="endDate.invalid && endDate.touched"
                 [(ngModel)]="taskDataModel.endDate" placeholder="dd-mm-yyyy">
             </div>
-            
+
         </div>
 
         <div class="form-group row">
