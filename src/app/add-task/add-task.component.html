@@ -1,0 +1,76 @@
+<div class="routeContainer">
+    <div id="successAlert" *ngIf="successMsg" class="alert alert-success alert-dismissible">
+        <a (click)="removeAlert('successAlert')" class="close" aria-label="close">&times;</a>
+        <span id="alertMsg">{{successMsg}}</span>
+    </div>
+    <div id="errAlert" *ngIf="errMsg" class="alert alert-danger alert-dismissible">
+        <a (click)="removeAlert('errAlert')" class="close" aria-label="close">&times;</a>
+        <span id="alertMsg">{{errMsg}}</span>
+    </div>
+    <form #addTaskForm="ngForm" (ngSubmit)="addTask()">
+        <div class="form-group row">
+            <label for="task" class="col-sm-1 col-form-label">Task:</label>
+            <div class="col-sm-5">
+                <input type="text" id="task" class="form-control taskInputBg" required #task="ngModel" name="task"
+                [class.taskInputBg]="task.valid || task.untouched"
+                [class.taskInputBg-Invalid]="task.invalid && task.touched" [(ngModel)]="taskDataModel.task">
+            </div>
+            <small class="text-danger" [class.d-none]="task.valid || task.untouched">Task is required</small>
+        </div>
+
+        <div class="form-group row">
+            <label for="priority" class="col-sm-1 col-form-label">Priority:</label>
+            <div class="col-sm-5">
+                <input type="range" class="custom-range" min="0" max="30" step="1" id="priority" name="priority"
+                list="tickmarks" required [(ngModel)]="taskDataModel.priority">
+                <datalist id="tickmarks">
+                        <option value="0" label="0">
+                        <option value="30" label="30">
+                    </datalist>
+            </div>
+            <div class="col-sm-1">
+                    <span>{{taskDataModel.priority}}</span>
+                </div>
+        </div>
+        
+        <div class="form-group row">
+            <label for="parentTask" class="col-sm-1 col-form-label">Parent Task:</label>
+            <div class="col-sm-5">
+                <input type="text" id="parentTask" name="parentTask" class="form-control taskInputBg"
+                [(ngModel)]="taskDataModel.parentTask">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="startDate" class="col-sm-1 col-form-label">Task:</label>
+            <div class="col-sm-5">
+                <input type="text" id="startDate" name="startDate" class="form-control taskInputBg" required #startDate="ngModel" 
+                [class.taskInputBg]="startDate.valid || startDate.untouched"
+                    [class.taskInputBg-Invalid]="startDate.invalid && startDate.touched"
+                    [(ngModel)]="taskDataModel.startDate" placeholder="dd-mm-yyyy">
+            </div>
+            <small class="text-danger" [class.d-none]="startDate.valid || startDate.untouched">Start Date is
+                    required</small>
+        </div>
+
+        <div class="form-group row">
+            <label for="endDate" class="col-sm-1 col-form-label">Task:</label>
+            <div class="col-sm-5">
+                <input type="text" id="endDate" name="endDate" class="form-control taskInputBg" #endDate="ngModel"
+                [class.taskInputBg]="endDate.valid || endDate.untouched"
+                [class.taskInputBg-Invalid]="endDate.invalid && endDate.touched"
+                [(ngModel)]="taskDataModel.endDate" placeholder="dd-mm-yyyy">
+            </div>
+            
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-5">
+                <button [disabled]="addTaskForm.form.invalid" type="submit" class="taskBtnGg">Add Task</button>
+                <button type="reset" class="taskBtnGg">Reset</button>
+            </div>
+        </div>
+    </form>
+
+</div>

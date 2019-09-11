@@ -1,0 +1,107 @@
+<div class="routeContainer">
+    <div id="successAlert" *ngIf="successMsg" class="alert alert-success alert-dismissible">
+        <a (click)="removeAlert('successAlert')" class="close" aria-label="close">&times;</a>
+        <span id="alertMsg">{{successMsg}}</span>
+    </div>
+    <div id="errAlert" *ngIf="errMsg" class="alert alert-danger alert-dismissible">
+        <a (click)="removeAlert('errAlert')" class="close" aria-label="close">&times;</a>
+        <span id="alertMsg">{{errMsg}}</span>
+    </div>
+    <form>
+        <div class="form-group row">
+            <label for="inpTask" class="col-sm-1 col-form-label">Task:</label>
+            <div class="col-sm-5">
+                <input type="text" id="inpTask" class="form-control taskInputBg" (keyup)="matchByTask()">
+            </div>
+            
+            <label for="inpParentTask" class="col-sm-1 col-form-label">Parent Task:</label>
+            <div class="col-sm-5">
+                <input type="text" id="inpParentTask" class="form-control taskInputBg" (keyup)="matchByTask()">
+            </div>
+            
+        </div>
+        <div class="form-group row">
+            <label for="inpPriorityFrom" class="col-sm-1 col-form-label">Priority From:</label>
+            <div class="col-sm-2">
+                <input type="text" id="inpPriorityFrom" class="form-control taskInputBg" (keyup)="matchByTask()">
+            </div>
+
+            <label for="inpPriorityTo" class="col-sm-1 col-form-label">Priority To:</label>
+            <div class="col-sm-2">
+                <input type="text" id="inpPriorityTo" class="form-control taskInputBg" (keyup)="matchByTask()">
+            </div>
+
+            <label for="inpStartDate" class="col-sm-1 col-form-label">Start Date:</label>
+            <div class="col-sm-2">
+                <input type="text" id="inpStartDate" class="form-control taskInputBg" (keyup)="matchByTask()" placeholder="dd-mm-yyyy">
+            </div>
+
+            <label for="inpEndDate" class="col-sm-1 col-form-label">End Date:</label>
+            <div class="col-sm-2">
+                <input type="text" id="inpEndDate" class="form-control taskInputBg" (keyup)="matchByTask()" placeholder="dd-mm-yyyy">
+            </div>
+        </div>
+
+    </form>
+    <div class="row">
+        <hr />
+    </div>
+    
+    
+
+    <div *ngIf="allFilteredTasks?.length > 0">
+        
+        <div *ngFor="let task of allFilteredTasks">
+            <div class="form-group row task_header">
+                <div class="col-sm-2">
+                    Task
+                </div>
+                <div class="col-sm-2">
+                    Parent
+                </div>
+                <div class="col-sm-1">
+                    Priotity
+                </div>
+                <div class="col-sm-2">
+                    Start
+                </div>
+                <div class="col-sm-2">
+                    End
+                </div>
+                <div class="col-sm-3">
+        
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-2">
+                    <div class="taskOutputBg">{{task.task}}</div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="taskOutputBg">{{task.parentTask}}</div>
+                </div>
+                <div class="col-sm-1">
+                    {{task.priority}}
+                </div>
+                <div class="col-sm-2">
+                    {{task.startDate}}
+                </div>
+                <div class="col-sm-2">
+                    {{task.endDate}}
+                </div>
+                <div class="col-sm-3">
+                    <div *ngIf="(task.priority > -1)">
+                            <a class="taskBtnGg" target="_blank" [routerLink]="['/update-task',task.taskId]">Edit</a>
+                            
+                            <button type="button" [disabled] = "(task.priority == -1)" class="taskBtnGg" (click) = "endTask(task.taskId)">End Task</button>
+                    </div>
+                    
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    <div *ngIf="allFilteredTasks?.length == 0">
+        <label>No Tasks available!</label>
+    </div>
+</div>
