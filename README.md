@@ -6,7 +6,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 1. Make sure the MongoDb database is up and running on port **27017**. Please refer to the DataTier setup steps @ https://github.com/avik-fse/fse-data-tier/blob/master/README.md.
 2. The task-manager-api is up and running on port 8080_
 
-###Steps for building the Presentation Tier:
+### Steps for building the Presentation Tier:
 
 1. Get the source code from git repo:  
    `https://github.com/avik-fse/task-manager-ui.git`
