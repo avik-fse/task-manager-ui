@@ -9,7 +9,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ### Steps for building the Presentation Tier:
 
 1. Get the source code from git repo:  
-   `https://github.com/avik-fse/task-manager-ui.git`
+   `git clone https://github.com/avik-fse/task-manager-ui.git`
 
 2. From command prompt, go to the root folder of the application in the checked out location (i.e inside task-manager-ui):
    
