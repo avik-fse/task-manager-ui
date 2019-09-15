@@ -32,4 +32,8 @@ export class AddTaskComponent implements OnInit {
     );
   }
 
+  getLabel(labelKey: string) {
+    return this._taskManagerService.getLabel(labelKey);
+  }
+
 }

@@ -122,4 +122,8 @@ export class ViewTaskComponent implements OnInit {
     );
   }
 
+  getLabel(labelKey: string) {
+    return this._taskManagerService.getLabel(labelKey);
+  }
+
 }

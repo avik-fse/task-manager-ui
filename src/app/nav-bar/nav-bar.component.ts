@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { TaskManagerService } from '../task-manager.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -8,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class NavBarComponent implements OnInit {
 
-  constructor(public router: Router) { }
+  constructor(public router: Router, private _taskManagerService: TaskManagerService) { }
 
   ngOnInit() {
   }
@@ -18,6 +19,10 @@ export class NavBarComponent implements OnInit {
 
   toggleNavbar() {
     this.navbarOpen = !this.navbarOpen;
+  }
+
+  getLabel(labelKey: string) {
+    return this._taskManagerService.getLabel(labelKey);
   }
 
 }

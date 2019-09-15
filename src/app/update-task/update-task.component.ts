@@ -52,4 +52,8 @@ export class UpdateTaskComponent implements OnInit {
     this.taskDataModel = this.taskDataModelPrestine;
   }
 
+  getLabel(labelKey: string) {
+    return this._taskManagerService.getLabel(labelKey);
+  }
+
 }

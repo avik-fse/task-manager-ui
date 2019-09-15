@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TaskManagerService } from './task-manager.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'task-manager';
+
+  constructor(private _taskManagerService: TaskManagerService) {
+    _taskManagerService.initI18n();
+  }
 }
