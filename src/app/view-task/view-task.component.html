@@ -13,12 +13,12 @@
             <div class="col-sm-5">
                 <input type="text" id="inpTask" class="form-control taskInputBg" (keyup)="matchByTask()">
             </div>
-            
+
             <label for="inpParentTask" class="col-sm-1 col-form-label">{{getLabel('label.parentTask')}}:</label>
             <div class="col-sm-5">
                 <input type="text" id="inpParentTask" class="form-control taskInputBg" (keyup)="matchByTask()">
             </div>
-            
+
         </div>
         <div class="form-group row">
             <label for="inpPriorityFrom" class="col-sm-1 col-form-label">{{getLabel('label.priorityFrom')}}:</label>
@@ -33,12 +33,14 @@
 
             <label for="inpStartDate" class="col-sm-1 col-form-label">{{getLabel('label.startDate')}}:</label>
             <div class="col-sm-2">
-                <input type="text" id="inpStartDate" class="form-control taskInputBg" (keyup)="matchByTask()" placeholder="dd-mm-yyyy">
+                <input type="text" id="inpStartDate" class="form-control taskInputBg" (keyup)="matchByTask()"
+                    placeholder="dd-mm-yyyy">
             </div>
 
             <label for="inpEndDate" class="col-sm-1 col-form-label">{{getLabel('label.endDate')}}:</label>
             <div class="col-sm-2">
-                <input type="text" id="inpEndDate" class="form-control taskInputBg" (keyup)="matchByTask()" placeholder="dd-mm-yyyy">
+                <input type="text" id="inpEndDate" class="form-control taskInputBg" (keyup)="matchByTask()"
+                    placeholder="dd-mm-yyyy">
             </div>
         </div>
 
@@ -46,11 +48,11 @@
     <div class="row">
         <hr />
     </div>
-    
-    
+
+
 
     <div *ngIf="allFilteredTasks?.length > 0">
-        
+
         <div *ngFor="let task of allFilteredTasks">
             <div class="form-group row task_header">
                 <div class="col-sm-2">
@@ -69,7 +71,7 @@
                     {{getLabel('label.end')}}
                 </div>
                 <div class="col-sm-3">
-        
+
                 </div>
             </div>
             <div class="form-group row">
@@ -90,14 +92,16 @@
                 </div>
                 <div class="col-sm-3">
                     <div *ngIf="(task.priority > -1)">
-                            <a class="taskBtnGg" target="_blank" [routerLink]="['/update-task',task.taskId]">{{getLabel('label.edit')}}</a>
-                            
-                            <button type="button" [disabled] = "(task.priority == -1)" class="taskBtnGg" (click) = "endTask(task.taskId)">{{getLabel('label.endTask')}}</button>
+                        <a class="taskBtnGg" target="_blank"
+                            [routerLink]="['/update-task',task.taskId]">{{getLabel('label.edit')}}</a>
+
+                        <button type="button" [disabled]="(task.priority == -1)" class="taskBtnGg"
+                            (click)="endTask(task.taskId)">{{getLabel('label.endTask')}}</button>
                     </div>
-                    
+
                 </div>
             </div>
-            
+
         </div>
     </div>
 

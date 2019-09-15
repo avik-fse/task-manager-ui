@@ -5,7 +5,8 @@
         aria-label="Toggle navigation" *ngIf="router.url.startsWith('/update-task') == false">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" [ngClass]="{ 'show': navbarOpen }" *ngIf="router.url.startsWith('/update-task') == false">
+    <div class="collapse navbar-collapse" [ngClass]="{ 'show': navbarOpen }"
+        *ngIf="router.url.startsWith('/update-task') == false">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
                 <a class="nav-link tabUnselected" routerLink="/add-task" routerLinkActive="tabSelected"

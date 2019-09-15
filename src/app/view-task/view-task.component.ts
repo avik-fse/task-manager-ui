@@ -50,7 +50,7 @@ export class ViewTaskComponent implements OnInit {
     this.allTasks.forEach(element => {
       var matched = true;
       if (task && task.length > 0) {
-        if(element.task.toLowerCase().startsWith(task.toLowerCase())){
+        if (element.task.toLowerCase().startsWith(task.toLowerCase())) {
           matched = true;
         } else {
           matched = false;
@@ -58,7 +58,7 @@ export class ViewTaskComponent implements OnInit {
       }
 
       if (matched && parentTask && parentTask.length > 0) {
-        if(element.parentTask.toLowerCase().startsWith(parentTask.toLowerCase())){
+        if (element.parentTask.toLowerCase().startsWith(parentTask.toLowerCase())) {
           matched = true;
         } else {
           matched = false;
@@ -66,12 +66,12 @@ export class ViewTaskComponent implements OnInit {
       }
 
       if (matched && priorityFrom && priorityFrom.length > 0 && priorityTo && priorityTo.length > 0) {
-        
-        if(!isNaN(priorityFrom as any) && !isNaN(priorityTo as any)) {
+
+        if (!isNaN(priorityFrom as any) && !isNaN(priorityTo as any)) {
           var priorityFromNum = parseInt(priorityFrom);
           var priorityToNum = parseInt(priorityTo);
 
-          if(priorityFromNum <= priorityToNum && element.priority >= priorityFromNum && element.priority <= priorityToNum){
+          if (priorityFromNum <= priorityToNum && element.priority >= priorityFromNum && element.priority <= priorityToNum) {
             matched = true;
           } else {
             matched = false;
@@ -80,7 +80,7 @@ export class ViewTaskComponent implements OnInit {
       }
 
       if (matched && startDate && startDate.length > 0) {
-        if(element.startDate && element.startDate.startsWith(startDate)){
+        if (element.startDate && element.startDate.startsWith(startDate)) {
           matched = true;
         } else {
           matched = false;
@@ -88,14 +88,14 @@ export class ViewTaskComponent implements OnInit {
       }
 
       if (matched && endDate && endDate.length > 0) {
-        if(element.endDate && element.endDate.startsWith(endDate)){
+        if (element.endDate && element.endDate.startsWith(endDate)) {
           matched = true;
         } else {
           matched = false;
         }
       }
 
-      if(matched) {
+      if (matched) {
         matchedTasks.push(element);
       }
 
