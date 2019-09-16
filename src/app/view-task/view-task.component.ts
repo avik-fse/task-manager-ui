@@ -25,8 +25,6 @@ export class ViewTaskComponent implements OnInit {
   getAllTask() {
     this._taskManagerService.getAllTasks().subscribe(
       data => {
-        //this.successMsg = data != null && data.value != '' ? data.value : 'Operation Successfull!';
-        //setTimeout(() => this.removeAlert('successAlert'), 2000);
         this.allTasks = data;
         this.allFilteredTasks = data;
       },

@@ -10,6 +10,7 @@ export class AppComponent {
   title = 'task-manager';
 
   constructor(private _taskManagerService: TaskManagerService) {
+    _taskManagerService.setLanguage('en');
     _taskManagerService.initI18n();
   }
 }

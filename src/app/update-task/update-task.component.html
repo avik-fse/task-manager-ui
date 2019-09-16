@@ -38,7 +38,18 @@
             <label for="parentTask" class="col-sm-1 col-form-label">{{getLabel('label.parentTask')}}:</label>
             <div class="col-sm-5">
                 <input type="text" id="parentTask" name="parentTask" class="form-control taskInputBg"
+                    list="taskAndParentTaskList" (change)="manageParentInput($event)"
                     [(ngModel)]="taskDataModel.parentTask">
+
+                <datalist id="taskAndParentTaskList" style="display:none">
+                    <option *ngFor="let parent of parentTaskMappingModel"
+                        [value]="parent.task === undefined ? ('PT | ' + parent.parentId + ' | ' + parent.parentTask) : ('T | ' + parent.taskId + ' | ' + parent.task)">
+                        <label *ngIf="parent.task === undefined">{{parent.parentId}} {{parent.parentTask}}</label>
+                        <label *ngIf="parent.task != undefined">{{parent.taskId}} {{parent.task}} [{{parent.startDate}}
+                            {{parent.endDate != undefined ? ' TO ' + parent.endDate : ''}}]</label>
+                    </option>
+                </datalist>
+
             </div>
         </div>
 

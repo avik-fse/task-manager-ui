@@ -4,6 +4,9 @@ export class TaskDataModel {
         public priority: number,
         public parentTask: string,
         public startDate: string,
-        public endDate: string
-    ) {}
+        public endDate: string,
+        public taskId: number,
+        public parentId: number,
+        public isParentCollection: boolean
+    ) { }
 }

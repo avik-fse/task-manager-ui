@@ -10,16 +10,24 @@ import { throwError } from 'rxjs';
 export class TaskManagerService {
   _urlAddTask = "/api/taskManager/addTask";
   _urlGetAllTasks = "/api/taskManager/allTasks";
+  _urlGetAllParentsAndActiveTasks = "/api/taskManager/allParentsAndActiveTasks";
   _urlGetTaskById = "/api/taskManager/taskById";
   _urlEndTask = "/api/taskManager/endTask/";
   _urlUpdateTask = "/api/taskManager/updateTask";
   _urlI18nMessages = "/api/taskManager/i18nMessages";
 
   appMessages = new Map();
-  headers =
-    { 'Content-Type': 'application/json', 'Accept': '*/*', 'Access-Control-Allow-Origin': '*', 'Accept-Language': 'fr' }
+  lang: string;
+  headers = {};
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this.setAppHeader();
+  }
+
+  private setAppHeader() {
+    this.headers =
+      { 'Content-Type': 'application/json', 'Accept': '*/*', 'Access-Control-Allow-Origin': '*', 'Accept-Language': this.lang }
+  }
 
   initI18n() {
 
@@ -46,6 +54,13 @@ export class TaskManagerService {
   getAllTasks() {
 
     return this.http.get<any>(this._urlGetAllTasks, {
+      headers: this.headers
+    }).pipe(catchError(this.errorHandler));
+  }
+
+  allParentsAndActiveTasks() {
+
+    return this.http.get<any>(this._urlGetAllParentsAndActiveTasks, {
       headers: this.headers
     }).pipe(catchError(this.errorHandler));
   }
@@ -77,7 +92,7 @@ export class TaskManagerService {
 
   getLabel(labelKey: string) {
     let label = '';
-    switch(labelKey) {
+    switch (labelKey) {
       case 'label.task':
         label = this.appMessages.get(labelKey);
         if (label == undefined || label == null || label == '') {
@@ -206,5 +221,13 @@ export class TaskManagerService {
     }
 
     return label;
+  }
+
+  setLanguage(inpLang: string) {
+    this.lang = inpLang;
+
+    this.setAppHeader();
+
+    this.initI18n();
   }
 }

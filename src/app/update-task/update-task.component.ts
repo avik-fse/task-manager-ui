@@ -10,8 +10,9 @@ import Utils from '../utils';
   styleUrls: ['./update-task.component.sass']
 })
 export class UpdateTaskComponent implements OnInit {
-  private taskDataModel: TaskDataModel = new TaskDataModel('', 0, '', '', '');
+  private taskDataModel: TaskDataModel = new TaskDataModel('', 0, '', '', '', 0, 0, false);
   private taskDataModelPrestine: TaskDataModel;
+  private parentTaskMappingModel: TaskDataModel[];
   successMsg = '';
   errMsg = '';
   taskId = '';
@@ -25,6 +26,17 @@ export class UpdateTaskComponent implements OnInit {
       data => {
         this.taskDataModel = data;
         this.taskDataModelPrestine = data;
+
+        //Load all parent tasks and tasks to show in the parent task type ahead
+        this._taskManagerService.allParentsAndActiveTasks().subscribe(
+          data => {
+            this.parentTaskMappingModel = data;
+          },
+          error => {
+            this.errMsg = error.error != null ? error.error : error.statusText;
+            setTimeout(() => Utils.removeAlert('errAlert', this), 2000);
+          }
+        );
       },
       error => {
         this.errMsg = error.error != null ? error.error : error.statusText;
@@ -32,6 +44,7 @@ export class UpdateTaskComponent implements OnInit {
       }
     );
 
+    this.disableKeypressOnParent();
   }
 
   updateTask() {
@@ -54,6 +67,33 @@ export class UpdateTaskComponent implements OnInit {
 
   getLabel(labelKey: string) {
     return this._taskManagerService.getLabel(labelKey);
+  }
+
+  manageParentInput($event) {
+    const parentTaskRec = $event.target.value;
+
+    if (parentTaskRec != undefined) {
+      const parentTaskParts = parentTaskRec.split(' | ');
+      if (parentTaskParts.length == 3) {
+        $event.target.value = parentTaskParts[2];
+
+        //Set teh hidden fields
+        this.taskDataModel.parentTask = parentTaskParts[2];
+        this.taskDataModel.parentId = parseInt(parentTaskParts[1]);
+        this.taskDataModel.isParentCollection = parentTaskParts[0] === 'PT' ? true : false;
+      } else {
+        this.taskDataModel.parentTask = parentTaskRec;
+      }
+
+    }
+
+  }
+
+  disableKeypressOnParent() {
+    $('#parentTask').bind('keypress', function (e) {
+      e.preventDefault();
+    });
+
   }
 
 }

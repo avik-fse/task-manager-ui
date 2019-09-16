@@ -8,10 +8,12 @@ import { TaskManagerService } from '../task-manager.service';
   styleUrls: ['./nav-bar.component.sass']
 })
 export class NavBarComponent implements OnInit {
+  lang: string;
 
   constructor(public router: Router, private _taskManagerService: TaskManagerService) { }
 
   ngOnInit() {
+    this.lang = this._taskManagerService.lang;
   }
 
   navbarOpen = false;
@@ -23,6 +25,10 @@ export class NavBarComponent implements OnInit {
 
   getLabel(labelKey: string) {
     return this._taskManagerService.getLabel(labelKey);
+  }
+
+  setLanguage($event) {
+    this._taskManagerService.setLanguage($event.target.value);
   }
 
 }
