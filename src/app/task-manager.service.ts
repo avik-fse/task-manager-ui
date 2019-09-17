@@ -142,6 +142,13 @@ export class TaskManagerService {
         }
         break;
 
+      case 'label.cancel':
+        label = this.appMessages.get(labelKey);
+        if (label == undefined || label == null || label == '') {
+          label = 'Cancel';
+        }
+        break;
+
       case 'label.priorityFrom':
         label = this.appMessages.get(labelKey);
         if (label == undefined || label == null || label == '') {

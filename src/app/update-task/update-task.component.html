@@ -82,7 +82,7 @@
             <div class="col-sm-5">
                 <button [disabled]="updateTaskForm.form.invalid" type="submit"
                     class="taskBtnGg">{{getLabel('label.updateTask')}}</button>
-                <button type="reset" class="taskBtnGg">{{getLabel('label.reset')}}</button>
+                <button class="taskBtnGg" [routerLink]="['/view-task']">{{getLabel('label.cancel')}}</button>
             </div>
         </div>
     </form>
