@@ -8,13 +8,13 @@ import { throwError } from 'rxjs';
   providedIn: 'root'
 })
 export class TaskManagerService {
-  _urlAddTask = "/api/taskManager/addTask";
-  _urlGetAllTasks = "/api/taskManager/allTasks";
-  _urlGetAllParentsAndActiveTasks = "/api/taskManager/allParentsAndActiveTasks";
-  _urlGetTaskById = "/api/taskManager/taskById";
-  _urlEndTask = "/api/taskManager/endTask/";
-  _urlUpdateTask = "/api/taskManager/updateTask";
-  _urlI18nMessages = "/api/taskManager/i18nMessages";
+  _urlAddTask = "/task-manager-api/api/taskManager/addTask";
+  _urlGetAllTasks = "/task-manager-api/api/taskManager/allTasks";
+  _urlGetAllParentsAndActiveTasks = "/task-manager-api/api/taskManager/allParentsAndActiveTasks";
+  _urlGetTaskById = "/task-manager-api/api/taskManager/taskById";
+  _urlEndTask = "/task-manager-api/api/taskManager/endTask/";
+  _urlUpdateTask = "/task-manager-api/api/taskManager/updateTask";
+  _urlI18nMessages = "/task-manager-api/api/taskManager/i18nMessages";
 
   appMessages = new Map();
   lang: string;

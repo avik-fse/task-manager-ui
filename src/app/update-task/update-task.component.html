@@ -1,11 +1,11 @@
 <div class="routeContainer">
     <div id="successAlert" *ngIf="successMsg" class="alert alert-success alert-dismissible">
-        <a (click)="removeAlert('successAlert')" class="close" aria-label="close">&times;</a>
-        <span id="alertMsg">{{successMsg}}</span>
+        <a (click)="removeAlert('successAlert', this)" class="close" aria-label="close">&times;</a>
+        <span id="alertMsgSuccess">{{successMsg}}</span>
     </div>
     <div id="errAlert" *ngIf="errMsg" class="alert alert-danger alert-dismissible">
-        <a (click)="removeAlert('errAlert')" class="close" aria-label="close">&times;</a>
-        <span id="alertMsg">{{errMsg}}</span>
+        <a (click)="removeAlert('errAlert', this)" class="close" aria-label="close">&times;</a>
+        <span id="alertMsgFailure">{{errMsg}}</span>
     </div>
     <form #updateTaskForm="ngForm" (ngSubmit)="updateTask()">
         <div class="form-group row">

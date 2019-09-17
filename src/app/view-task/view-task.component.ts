@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class ViewTaskComponent implements OnInit {
   private allTasks: TaskDataModel[];
-  private allFilteredTasks: TaskDataModel[];
+  allFilteredTasks: TaskDataModel[];
 
   successMsg = '';
   errMsg = '';
@@ -124,4 +124,7 @@ export class ViewTaskComponent implements OnInit {
     return this._taskManagerService.getLabel(labelKey);
   }
 
+  removeAlert(alertDivId: string, compRef: any) {
+    Utils.removeAlert(alertDivId, compRef)
+  }
 }

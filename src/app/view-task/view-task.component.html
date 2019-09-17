@@ -1,11 +1,11 @@
 <div class="routeContainer">
     <div id="successAlert" *ngIf="successMsg" class="alert alert-success alert-dismissible">
-        <a (click)="removeAlert('successAlert')" class="close" aria-label="close">&times;</a>
-        <span id="alertMsg">{{successMsg}}</span>
+        <a (click)="removeAlert('successAlert', this)" class="close" aria-label="close">&times;</a>
+        <span id="alertMsgSuccess">{{successMsg}}</span>
     </div>
     <div id="errAlert" *ngIf="errMsg" class="alert alert-danger alert-dismissible">
-        <a (click)="removeAlert('errAlert')" class="close" aria-label="close">&times;</a>
-        <span id="alertMsg">{{errMsg}}</span>
+        <a (click)="removeAlert('errAlert', this)" class="close" aria-label="close">&times;</a>
+        <span id="alertMsgFailure">{{errMsg}}</span>
     </div>
     <form>
         <div class="form-group row">
@@ -92,8 +92,7 @@
                 </div>
                 <div class="col-sm-3">
                     <div *ngIf="(task.priority > -1)">
-                        <a class="taskBtnGg" target="_blank"
-                            [routerLink]="['/update-task',task.taskId]">{{getLabel('label.edit')}}</a>
+                        <a class="taskBtnGg" [routerLink]="['/update-task',task.taskId]">{{getLabel('label.edit')}}</a>
 
                         <button type="button" [disabled]="(task.priority == -1)" class="taskBtnGg"
                             (click)="endTask(task.taskId)">{{getLabel('label.endTask')}}</button>

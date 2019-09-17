@@ -10,9 +10,9 @@ import Utils from '../utils';
   styleUrls: ['./update-task.component.sass']
 })
 export class UpdateTaskComponent implements OnInit {
-  private taskDataModel: TaskDataModel = new TaskDataModel('', 0, '', '', '', 0, 0, false);
+  taskDataModel: TaskDataModel = new TaskDataModel('', 0, '', '', '', 0, 0, false);
   private taskDataModelPrestine: TaskDataModel;
-  private parentTaskMappingModel: TaskDataModel[];
+  parentTaskMappingModel: TaskDataModel[];
   successMsg = '';
   errMsg = '';
   taskId = '';
@@ -96,4 +96,7 @@ export class UpdateTaskComponent implements OnInit {
 
   }
 
+  removeAlert(alertDivId: string, compRef: any) {
+    Utils.removeAlert(alertDivId, compRef)
+  }
 }

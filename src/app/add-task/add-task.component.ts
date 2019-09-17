@@ -9,14 +9,13 @@ import Utils from '../utils';
   styleUrls: ['./add-task.component.sass']
 })
 export class AddTaskComponent implements OnInit {
-  private taskDataModel = new TaskDataModel('', 0, '', '', '', 0, 0, false);
-  private parentTaskMappingModel: TaskDataModel[];
-
+  taskDataModel = new TaskDataModel('', 0, '', '', '', 0, 0, false);
+  parentTaskMappingModel: TaskDataModel[];
 
   successMsg = '';
   errMsg = '';
 
-  constructor(private _taskManagerService: TaskManagerService) { }
+  constructor(private _taskManagerService: TaskManagerService) {}
 
   ngOnInit() {
     //Load all parent tasks and tasks to show in the parent task type ahead
@@ -67,6 +66,10 @@ export class AddTaskComponent implements OnInit {
 
     }
 
+  }
+
+  removeAlert(alertDivId: string, compRef: any) {
+    Utils.removeAlert(alertDivId, compRef)
   }
 
 }
