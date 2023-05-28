@@ -32,6 +32,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
       `npm install`
       
    b. Run the below command to create the distribution package:
-      `ng build --prod --base-href=/task-manager/`
+      ~~`ng build --prod --base-href=/task-manager/`~~
+      `ng build --configuration production --base-href=/task-manager/`
       
    c. Copy the 'task-manager' folder from the 'dist' folder and put it in the server
